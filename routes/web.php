@@ -111,15 +111,15 @@ Route::get('/product/{id}', [ProductController::class, 'edit']);
 Route::put('/product/{id}', [ProductController::class, 'update']);
 Route::get('/product/remove/{id}', [ProductController::class, 'remove']);
 
-
-
-
-
-
-
-
-
-
+// 19/11/2024
+Route::post('/product/search', [ProductController::class, 'search']);
+Route::get('/product-sort', [ProductController::class, 'sort']);
+Route::get('/product-price-more-than', [ProductController::class, 'priceMoreThan']);
+Route::get('/product-price-less-than', [ProductController::class, 'priceLessThan']);
+Route::get('/product-price-between', [ProductController::class, 'priceBetween']);
+Route::get('/product-price-not-between', [ProductController::class, 'priceNotBetween']);
+Route::get('/product-price-in', [ProductController::class, 'priceIn']);
+Route::get('/product-max-min-count-avg', [ProductController::class, 'priceMaxMinCountAvg']);
 
 
 
