@@ -11,9 +11,15 @@ class ProductTypeComponent extends Component
     public $id;
     public $name;
     public $productTypes = [];
+    public $showModal = false;
+    public $editing = false;
 
     public function fetchData() {
         $this->productTypes = ProductType::orderBy('id', 'desc')->get();
+    }
+
+    public function create() {
+        $this->showModal = true;
     }
 
     public function save() {
@@ -28,9 +34,15 @@ class ProductTypeComponent extends Component
         $this->name = '';
 
         $this->fetchData();
+
+        $this->showModal = false;
+        $this->editing = false;
     }
 
     public function edit($id) {
+        $this->editing = true;
+        $this->showModal = true;
+
         $productType = ProductType::find($id);
         $this->id = $productType->id;
         $this->name = $productType->name;

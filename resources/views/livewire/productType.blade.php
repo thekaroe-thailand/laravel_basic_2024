@@ -1,18 +1,10 @@
 <div>
     <h1>Product Type</h1>
 
-    <form wire:submit="save">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">ประเภทสินค้า</div>
-            </div>
-            <div class="card-body">
-                <div>Name</div>
-                <input type="text" wire:model="name" class="form-control" />
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </div>
-    </form>
+    <button class="btn btn-primary" wire:click="create">
+        <i class="fa fa-plus"></i>
+        เพิ่มประเภทสินค้า
+    </button>
 
     <table class="table table-bordered table-striped mt-3">
         <thead>
@@ -37,5 +29,25 @@
             @endforeach
         </tbody>
     </table>
+
+    <x-modal wire:model="showModal" title="{{ isset($editing) ? 'แก้ไขประเภทสินค้า' : 'เพิ่มประเภทสินค้า' }}">
+        <div class="px-3 py-3">
+            <div class="mt-2">
+                <div>Name</div>
+                <input type="text" wire:model="name" class="form-control" />
+            </div>
+
+            <div class="mt-3 p-2 text-right">
+                <button wire:click="showModal = false" type="button" class="btn btn-secondary">
+                    <i class="fa fa-save"></i>
+                    ยกเลิก
+                </button>
+                <button wire:click="save" type="button" class="btn btn-primary">
+                    <i class="fa fa-save"></i>
+                    บันทึก
+                </button>
+            </div>
+        </div>
+    </x-modal>
 </div>
 
